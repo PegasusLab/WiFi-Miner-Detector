@@ -1,10 +1,14 @@
-# WiFi-Miner-Detector
+# WiFi Miner Detector
 by qingxp9 @ 360PegasusTeam
 
-##Overview
-Detecting malicious WiFi with mining cryptocurrency.
+## Overview
+A tool for detecting malicious WiFi with mining cryptocurrency.
 
-##Requirements
+Some weeks ago I read a news "Starbucks Wi-Fi Hijacked People's Laptops to Mine Cryptocurrency". The attackers inject the CoinHive javascript miner to HTTP Response, so I write this tool to detect malicious WiFi with miner scripts. 
+
+It base on analyzing the encrypted 802.11 Data Frame to find keywords in HTTP data, Because this attack is major occured in Public Free WiFi.
+
+## Requirements
 ```
 sudo apt install python-pip
 pip install scapy
@@ -25,7 +29,12 @@ And you'll need a WiFi card that supports monitor mode. You can check by running
 
 I test on TP-Link TL-WN722N (chipset Atheros AR9271), and it works well.
 
-##Usage
+## Usage
+```
 sudo python wifi_miner_detector.py wlan0
+```
 
 ![demo](https://github.com/360PegasusTeam/WiFi-Miner-Detector/blob/master/demo.gif)
+
+Now we can only detect CoinHive_Miner, but you can add any rules in **HTTPHandler** to expand it. Just pull a request if you have any idea. 
+
