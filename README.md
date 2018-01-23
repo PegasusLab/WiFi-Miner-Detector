@@ -6,7 +6,7 @@ A tool for detecting malicious WiFi with mining cryptocurrency.
 
 Some weeks ago I read a news "Starbucks Wi-Fi Hijacked People's Laptops to Mine Cryptocurrency". The attackers inject the CoinHive javascript miner to HTTP Response, so I write this tool to detect malicious WiFi with miner scripts. 
 
-It is based on analyzing the encrypted 802.11 Data Frame to find keywords in HTTP data, Because this attack is major occured in public open WiFi.
+It is based on analyzing the unencrypted 802.11 Data Frame to find keywords in HTTP data, Because this attack is major occured in public open WiFi.
 
 ## Requirements
 ```
