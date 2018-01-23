@@ -38,3 +38,8 @@ sudo python wifi_miner_detector.py wlan0
 
 Now we can only detect CoinHive_Miner, but you can add any rules in **HTTPHandler** to expand it. Just pull a request if you have any idea. 
 
+## References
+
+- http://www.freebuf.com/articles/web/161010.html
+- https://www.anquanke.com/post/id/95697
+- https://twitter.com/qingxp9/status/955690890982449153
