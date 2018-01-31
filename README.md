@@ -27,7 +27,7 @@ And you'll need a WiFi card that supports monitor mode. You can check by running
 		 * mesh point
 ```
 
-I test on TP-Link TL-WN722N (chipset Atheros AR9271), and it works well.
+I tested it with TP-Link TL-WN722N (chipset Atheros AR9271), and works well.
 
 ## Usage
 ```
@@ -42,4 +42,4 @@ Now we can only detect CoinHive_Miner, but you can add any rules in **HTTPHandle
 
 - http://www.freebuf.com/articles/web/161010.html
 - https://www.anquanke.com/post/id/95697
-- https://twitter.com/qingxp9/status/955690890982449153
+- https://twitter.com/qingxp9/status/957908040556015616

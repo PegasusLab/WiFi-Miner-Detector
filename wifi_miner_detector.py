@@ -38,7 +38,7 @@ os.system("ifconfig " + iface + " down")
 os.system("iwconfig " + iface + " mode monitor")
 os.system("ifconfig " + iface + " up")
 
-print "[+] Sniffing on channel " + str(channels)
+print "[+] Sniffing on channel " + str(channels) + "\n"
 while True:
     for channel in channels:
         os.system("iwconfig " + iface + " channel " + str(channel))
