@@ -5,7 +5,7 @@ import os
 if len(sys.argv) == 2:
   iface = str(sys.argv[1])
 else:
-  iface = "wlx4494fc2560a1"
+  iface = "wlan0"
 
 filter_response = "tcp src port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)"
 filter_beacon = "subtype probe-resp or subtype beacon"
@@ -23,14 +23,22 @@ def HTTPHandler(pkt):
       mac = pkt.addr2
       if mac in ap_dict.keys() :
         ssid = ap_dict[mac]
-        reason = "Coinhive_miner"
+        reason = "coinhiveMiner"
+        print "Find Rogue AP: %s(%s) -- %s" %(ssid, mac, reason)
+      else:
+        print mac
+
+    if "deepMiner.Anonymous" in pkt.load:
+      mac = pkt.addr2
+      if mac in ap_dict.keys() :
+        ssid = ap_dict[mac]
+        reason = "deepMiner"
         print "Find Rogue AP: %s(%s) -- %s" %(ssid, mac, reason)
       else:
         print mac
 
 print "WiFi-Miner-Detector"
 print "Detecting malicious WiFi with mining cryptocurrency.\n"
-print "https://github.com/360PegasusTeam/WiFi-Miner-Detector"
 print "by qingxp9 @ 360PegasusTeam\n"
 
 print "[+] Set iface %s to monitor mode" %(iface)
