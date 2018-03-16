@@ -4,10 +4,12 @@ by qingxp9 @ 360PegasusTeam
 ## Overview
 A tool for detecting malicious WiFi with mining cryptocurrency.
 
-Some weeks ago I read a news "Starbucks Wi-Fi Hijacked People's Laptops to Mine Cryptocurrency". The attackers inject the CoinHive javascript miner to HTTP Response, so I write this tool to detect malicious WiFi with miner scripts, include:
+Some weeks ago I read a news "Starbucks Wi-Fi Hijacked People's Laptops to Mine Cryptocurrency". The attackers inject the CoinHive javascript miner to HTTP Response, so I write this tool to detect malicious WiFi with miner scripts. Now it can detect:
 
-- [coinhiveMiner](https://coinhive.com/)
-- [deepMiner](https://github.com/deepwn/deepMiner)
+- [CoinHive](https://coinhive.com/)
+- [DeepMiner](https://github.com/deepwn/deepMiner)
+- [Crypto-Loot](https://crypto-loot.com/)
+- [CoinIMP](https://www.coinimp.com/)
 
 It is based on analyzing the unencrypted 802.11 Data Frame to find keywords in HTTP data, Because this attack is major occured in public open WiFi.
 

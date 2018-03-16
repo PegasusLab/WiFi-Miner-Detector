@@ -1,5 +1,5 @@
 from scapy.all import *
-from scapy.layers import http
+import scapy_http.http
 import os
 
 if len(sys.argv) == 2:
@@ -19,23 +19,25 @@ def BeaconHandler(pkt) :
 
 def HTTPHandler(pkt):
   if pkt.haslayer('HTTP'):
+    mac = pkt.addr2
     if "CoinHive.Anonymous" in pkt.load:
-      mac = pkt.addr2
-      if mac in ap_dict.keys() :
-        ssid = ap_dict[mac]
-        reason = "coinhiveMiner"
-        print "Find Rogue AP: %s(%s) -- %s" %(ssid, mac, reason)
-      else:
-        print mac
+      reason = "CoinHive"
+    elif "deepMiner.Anonymous" in pkt.load:
+      reason = "DeepMiner"
+    elif "CRLT.Anonymous" in pkt.load:
+      reason = "Crypto-Loot"
+    elif "Client.Anonymous" in pkt.load:
+      reason = "CoinIMP"
+    elif "Anonymous" in pkt.load:
+      reason = "Unknown"
+    else:
+      return
 
-    if "deepMiner.Anonymous" in pkt.load:
-      mac = pkt.addr2
-      if mac in ap_dict.keys() :
-        ssid = ap_dict[mac]
-        reason = "deepMiner"
-        print "Find Rogue AP: %s(%s) -- %s" %(ssid, mac, reason)
-      else:
-        print mac
+    if mac in ap_dict.keys() :
+      ssid = ap_dict[mac]
+      print "Find Rogue AP: %s(%s) -- %s" %(ssid, mac, reason)
+    else:
+      print mac
 
 print "WiFi-Miner-Detector"
 print "Detecting malicious WiFi with mining cryptocurrency.\n"
@@ -52,6 +54,6 @@ while True:
         os.system("iwconfig " + iface + " channel " + str(channel))
         #print "[+] Sniffing on channel " + str(channel)
 #Get surrounding WiFi SSID
-        sniff(iface=iface, prn=BeaconHandler, filter=filter_beacon , timeout=1)
+        sniff(iface=iface, prn=BeaconHandler, filter=filter_beacon , timeout=0.5)
 #Analyze HTTP
         sniff(iface=iface, prn=HTTPHandler, filter=filter_response, timeout=10)
